@@ -5,7 +5,7 @@ spring:
   application:
     name: catalog-service
     
-    datasource:
+  datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3370/movie-dev
     username: usr-movie
