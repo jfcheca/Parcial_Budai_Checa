@@ -10,10 +10,10 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: movielistRoute
-          uri: lb://catalog-service/
+        - id: movie-service
+          uri: lb://movie-service
           predicates:
-            - Path=/movielist/**
+            - Path=/movie/**
     
 eureka:
   client:
