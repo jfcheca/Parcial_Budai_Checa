@@ -11,6 +11,13 @@ spring:
     username: usr-movie
     password: pwd-movie  
 
+  data:
+    mongodb:
+    uri: mongodb://localhost:27017/catalog
+  username: root
+  root password: root
+  authentication-database: admin 
+   
 eureka:
   client:
     register-with-eureka: true
