@@ -1,25 +1,27 @@
 server:
   port: 8002
-  servlet: 
+  servlet:
     context-path: /catalog/
 
 spring:
   application:
     name: catalog-service
-    
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3370/movie-dev
     username: usr-movie
-    password: pwd-movie  
+    password: pwd-movie
 
   data:
     mongodb:
-    uri: mongodb://localhost:27017/catalog
-  username: root
-  root password: root
-  authentication-database: admin 
-   
+      uri: mongodb://localhost:27017/catalog
+
+  mongo:
+    username: root
+    password: root
+    authentication-database: admin
+
 eureka:
   client:
     register-with-eureka: true
@@ -28,7 +30,8 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      default-zone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
