@@ -17,14 +17,13 @@ spring:
     username: usr-movie
     password: pwd-movie
 
+  mongodb:
+    embedded:
+      version: 4.0.2
   data:
     mongodb:
-      uri: mongodb://localhost:27017/catalog
-
-  mongo:
-    username: root
-    password: root
-    authentication-database: admin
+      database: test
+      port: 27017
 
     rabbitmq:
     username: guest
