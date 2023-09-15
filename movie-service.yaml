@@ -23,7 +23,7 @@ spring:
     port: 5672
 queue:
   movie:
-    name: 
+    name: MovieQueue
     
 eureka:
   client:
