@@ -7,6 +7,10 @@ spring:
   application:
     name: catalog-service
 
+     zipkin:
+    base-url: http://localhost:9411/
+    enabled: true
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3370/movie-dev
@@ -22,6 +26,17 @@ spring:
     password: root
     authentication-database: admin
 
+    rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+queue:
+  serie:
+    name: 
+  movie:
+    name: 
+
 eureka:
   client:
     register-with-eureka: true
@@ -36,3 +51,35 @@ eureka:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
+
+  management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+     health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      movies:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 15000
+        permittedNumberOfCallsInHalfOpenState: 3
+        registerHealthIndicator: true
+        allowHealthIndicatorToFail: false
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+retry:
+  instances:
+    catalog-circuit:
+    waitDuration: 1000
+    maxAttempts : 3
+    retryExceptions:
+      - feign.FeignException$InternalServerError
