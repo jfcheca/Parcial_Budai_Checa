@@ -78,7 +78,7 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
 retry:
   instances:
-    catalog-circuit:
+    catalog:
     waitDuration: 1000
     maxAttempts : 3
     retryExceptions:
