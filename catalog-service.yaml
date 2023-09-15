@@ -1,42 +1,35 @@
 server:
-  port: 8002
-  servlet:
-    context-path: /catalog/
-
+  port: ${PORT:${SERVER_PORT:0}}
+idRandom: ${random.value}
 spring:
-  application:
-    name: catalog-service
-
-     zipkin:
+  zipkin:
     base-url: http://localhost:9411/
     enabled: true
-
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3370/movie-dev
-    username: usr-movie
-    password: pwd-movie
-
+  application:
+    name: catalog-service
   mongodb:
     embedded:
       version: 4.0.2
-  data:
+   data:
     mongodb:
       database: test
       port: 27017
-
     rabbitmq:
     username: guest
     password: guest
     host: localhost
     port: 5672
-queue:
+  queue:
   serie:
     name: SerieQueue
   movie:
     name: MovieQueue
-
-eureka:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3370/movie-dev
+    username: usr-movie
+    password: pwd-movie
+    eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -56,13 +49,12 @@ eureka:
     web:
       exposure:
         include: '*'
-     health:
+  health:
     circuitbreakers:
       enabled: true
   endpoint:
     health:
       show-details: always
-
 resilience4j:
   circuitbreaker:
     instances:
