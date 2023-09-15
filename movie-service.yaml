@@ -22,8 +22,8 @@ spring:
     host: localhost
     port: 5672
 queue:
-  movie1:
-    name: movie1
+  movie:
+    name: MovieQueue
     
 eureka:
   client:
